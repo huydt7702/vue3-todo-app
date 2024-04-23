@@ -3,7 +3,11 @@
     <div class="todo-app">
       <h1 class="heading">Todo App</h1>
       <form class="form-submit" @submit.prevent="handleAdd()">
-        <BaseInput v-model="newTodo" ref="inputRef" />
+        <BaseInput
+          v-model="newTodo"
+          ref="inputRef"
+          placeholder="Enter your new todo"
+        />
         <BaseButton>Add</BaseButton>
       </form>
       <TodoList>
@@ -24,10 +28,10 @@
 
 <script setup>
 import { ref } from "vue";
-import BaseButton from "@/components/common/BaseButton.vue";
-import BaseInput from "@/components/common/BaseInput.vue";
 import TodoList from "@/components/TodoList.vue";
 import TodoItem from "@/components/TodoItem.vue";
+import BaseInput from "@/components/common/BaseInput.vue";
+import BaseButton from "@/components/common/BaseButton.vue";
 import useLocalStorage from "@/composables/useLocalStorage";
 
 const newTodo = ref("");
@@ -56,8 +60,8 @@ function handleUpdate(index, newTodo) {
   saveTodos();
 }
 
-function handleChangeState(toto) {
-  toto.done = !toto.done;
+function handleChangeState(todo) {
+  todo.done = !todo.done;
   saveTodos();
 }
 </script>

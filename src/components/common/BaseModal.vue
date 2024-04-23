@@ -1,6 +1,6 @@
 <template>
   <Transition name="modal">
-    <div v-if="show" class="modal-mask" ref="modalRef">
+    <div v-if="show" class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">
           <slot name="header"></slot>
@@ -11,10 +11,10 @@
         </div>
 
         <div class="modal-footer">
-          <BaseButton type="secondary" @click="$emit('close')"
+          <BaseButton variant="danger" @click="$emit('close')"
             >Cancel</BaseButton
           >
-          <BaseButton type="update" @click="$emit('save')">Save</BaseButton>
+          <BaseButton variant="success" @click="$emit('save')">Save</BaseButton>
         </div>
       </div>
     </div>
@@ -22,10 +22,8 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
+import { defineProps } from "vue";
 import BaseButton from "@/components/common/BaseButton.vue";
-
-const modalRef = ref(null);
 
 defineProps({
   show: Boolean,
@@ -53,11 +51,6 @@ defineProps({
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-}
-
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
 }
 
 .modal-body {

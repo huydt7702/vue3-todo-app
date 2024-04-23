@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="{ [props.type]: props.type }">
+  <button class="button" :class="{ [props.variant]: props.variant }">
     <slot></slot>
   </button>
 </template>
@@ -8,7 +8,7 @@
 import { defineProps } from "vue";
 
 const props = defineProps({
-  type: {
+  variant: {
     type: String,
     default: "primary",
   },
@@ -35,11 +35,11 @@ const props = defineProps({
   background-color: #a500ed;
 }
 
-.secondary {
+.danger {
   background-color: red;
 }
 
-.update {
+.success {
   background-color: green;
 }
 </style>

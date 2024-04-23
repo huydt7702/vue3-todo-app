@@ -19,10 +19,7 @@ defineProps({
     type: String,
     default: "text",
   },
-  placeholder: {
-    type: String,
-    default: "Add your new todo",
-  },
+  placeholder: String,
 });
 
 defineExpose({
