@@ -1,4 +1,5 @@
-# todo-app
+# Dsoft Todo App
+## Link demo: https://dsoft-todo-app.netlify.app/
 
 ## Project setup
 ```
