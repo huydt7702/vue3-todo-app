@@ -22,8 +22,10 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 import BaseButton from "@/components/common/BaseButton.vue";
+
+const emit = defineEmits(["close", "save"]);
 
 defineProps({
   show: {

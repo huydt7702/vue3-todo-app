@@ -9,7 +9,9 @@ import { defineProps } from "vue";
 
 const props = defineProps({
   variant: {
-    type: String,
+    validator(value) {
+      return ["primary", "danger", "success"].includes(value);
+    },
     default: "primary",
   },
 });
