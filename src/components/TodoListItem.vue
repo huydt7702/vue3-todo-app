@@ -5,13 +5,15 @@
         type="checkbox"
         class="check-btn"
         :checked="todo.done"
-        @click="handleChangeState(todo)"
+        @click="emit('changeState', todo)"
       />
       <span class="label">{{ todo.content }}</span>
     </div>
     <div class="actions-btn">
       <BaseButton variant="success" @click="openModalUpdate">Update</BaseButton>
-      <BaseButton variant="danger" @click="handleRemove(id)">Remove</BaseButton>
+      <BaseButton variant="danger" @click="emit('remove', id)"
+        >Remove</BaseButton
+      >
     </div>
   </li>
   <Teleport to="body">
@@ -31,18 +33,17 @@
 </template>
 
 <script setup>
-import defineProps, { ref } from "vue";
+import { ref, defineEmits, defineProps } from "vue";
 import BaseButton from "@/components/common/BaseButton.vue";
 import BaseModal from "@/components/common/BaseModal.vue";
 import BaseInput from "@/components/common/BaseInput.vue";
 
+const emit = defineEmits(["update", "remove", "changeState"]);
+
 // eslint-disable-next-line vue/no-setup-props-destructure
-const { todo, handleUpdate } = defineProps({
+const { todo } = defineProps({
   id: Number,
   todo: Object,
-  handleRemove: Function,
-  handleUpdate: Function,
-  handleChangeState: Function,
 });
 
 const todoUpdate = ref(todo.content);
@@ -58,7 +59,7 @@ const closeModalUpdate = () => {
 
 const handleSave = (id, todo) => {
   if (!todoUpdate.value) return;
-  handleUpdate(id, { done: todo.done, content: todoUpdate });
+  emit("update", id, { done: todo.done, content: todoUpdate });
   closeModalUpdate();
 };
 </script>

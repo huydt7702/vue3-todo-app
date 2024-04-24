@@ -11,14 +11,14 @@
         <BaseButton>Add</BaseButton>
       </form>
       <TodoList>
-        <TodoItem
+        <TodoListItem
           v-for="(todo, index) in todos"
           :id="index"
           :key="index"
           :todo="todo"
-          :handleRemove="handleRemove"
-          :handleUpdate="handleUpdate"
-          :handleChangeState="handleChangeState"
+          @remove="handleRemove"
+          @update="handleUpdate"
+          @changeState="handleChangeState"
         />
       </TodoList>
       <h4 v-if="todos.length === 0" class="empty-todos">Empty Todos.</h4>
@@ -29,7 +29,7 @@
 <script setup>
 import { ref } from "vue";
 import TodoList from "@/components/TodoList.vue";
-import TodoItem from "@/components/TodoItem.vue";
+import TodoListItem from "@/components/TodoListItem.vue";
 import BaseInput from "@/components/common/BaseInput.vue";
 import BaseButton from "@/components/common/BaseButton.vue";
 import useLocalStorage from "@/composables/useLocalStorage";

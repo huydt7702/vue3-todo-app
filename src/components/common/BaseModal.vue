@@ -11,10 +11,10 @@
         </div>
 
         <div class="modal-footer">
-          <BaseButton variant="danger" @click="$emit('close')"
+          <BaseButton variant="danger" @click="emit('close')"
             >Cancel</BaseButton
           >
-          <BaseButton variant="success" @click="$emit('save')">Save</BaseButton>
+          <BaseButton variant="success" @click="emit('save')">Save</BaseButton>
         </div>
       </div>
     </div>
@@ -26,7 +26,10 @@ import { defineProps } from "vue";
 import BaseButton from "@/components/common/BaseButton.vue";
 
 defineProps({
-  show: Boolean,
+  show: {
+    type: Boolean,
+    default: false,
+  },
 });
 </script>
 
